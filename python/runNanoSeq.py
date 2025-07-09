@@ -666,6 +666,7 @@ if (args.subcommand == 'part'):
     chrOffset = {}
     tmpIntervals = []
     print("\nParsing coverage files\n")
+    # 解析 coverage 文件
     for i in range(nfiles):
         with gzip.open(tmpDir+"/cov/%s.cov.bed.gz" % (i+1), 'rt') as iofile:
             for iline in iofile:
@@ -673,7 +674,7 @@ if (args.subcommand == 'part'):
                 ib = int(iline.split('\t')[1])
                 ie = int(iline.split('\t')[2])
                 cc = int(iline.split('\t')[3])
-                cctotal += cc
+                cctotal += cc # 总覆盖度累加
                 if (args.excludeCov is not None):
                     if (cc >= args.excludeCov):
                         tmpIntervals.append(GInterval(ichr, ib+1, ie))
@@ -746,7 +747,8 @@ if (args.subcommand == 'part'):
     njobs = args.jobs
     basesPerCPU = cctotal / njobs
     print("\nPartitioning %s jobs with %s bases/task\n" % (njobs, basesPerCPU))
-
+  
+    # 根据覆盖度总和，将基因组区间均匀划分成若干个任务区间（intervals），每个任务负责约相同的覆盖量，最终生成任务区间列表并做完整性检查。
     sumCov = 0
     oIntervals = []
     intervalsPerCPU = []
