@@ -161,7 +161,7 @@ The wrapper scrpt has subcommands that that are meant to roughly follow the same
 
 #### Coverage (cov)
 
-A coverage histogram is computed for the bulk BAM.
+A coverage histogram is computed for the bulk BAM (the coverge per 100bp for bam file -B, generate a "$numberofchr.cov.bed.gz" file for each chromsome included).
 
 ```
 runNanoSeq.py -t 10 \
