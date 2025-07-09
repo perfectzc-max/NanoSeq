@@ -188,7 +188,7 @@ runNanoSeq.py -t 1 \
 
 #### dsa beds (dsa)
 
-Compute the dsa bed files. SNP and NOISE BED files contain sites to be marked on the output VCF file.
+Compute the dsa bed files. SNP and NOISE BED files contain sites to be marked on the output VCF file. generate information for each base site from normal.bam and tumour.bam
 
 ```
 runNanoSeq.py -t 60 \
