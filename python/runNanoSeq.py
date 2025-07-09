@@ -840,7 +840,9 @@ if (args.subcommand == 'dsa'):
     mapQ = None
     with open(tmpDir+'/cov/args.json') as iofile:
         mapQ = json.load(iofile)['Q']
-
+      
+    # 判断对应任务的标记文件和结果文件是否已经存在（.done 和 .dsa.bed.gz 文件）
+    # 如果存在，说明该任务已经完成，跳过继续执行，防止重复运行（支持重启功能）
     commands = [(None, )] * njobs
     for i in range(njobs):
         # check for restarts
