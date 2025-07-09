@@ -879,7 +879,7 @@ if (args.subcommand == 'dsa'):
     if (args.index is None or args.index == 1):
         with open("%s/dsa/nfiles" % (tmpDir), "w") as iofile:
             iofile.write(str(njobs))
-
+    # 调用dsa工具的源码了
     # execute dsa commans
     print("Starting dsa calculation\n")
     if (args.index is None):
